@@ -6,4 +6,4 @@ This project to use [Phantomjs](https://github.com/ariya/phantomjs) to render a 
 Usage
 -----
 
-$ ./phantomjs grabpage.js "https://example.com"
+$ ./phantomjs grabpage.js page.png "https://example.com"
