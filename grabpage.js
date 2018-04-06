@@ -24,7 +24,12 @@ page1.open(url, function(stat) {
     // https://stackoverflow.com/questions/31245553/how-to-get-the-height-of-a-full-html-page-in-phantomjs-javascript
     // https://stackoverflow.com/a/31248055/3054511
     var realHeight = page1.evaluate(function(){
-        return document.body.offsetHeight
+      // https://stackoverflow.com/a/1147768/3054511
+      var body = document.body,
+          html = document.documentElement;
+      var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                             html.clientHeight, html.scrollHeight, html.offsetHeight );
+        return height;
     });
 
     page2.viewportSize = { width:width, height:realHeight }
