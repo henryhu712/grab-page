@@ -12,7 +12,6 @@ if (system.args[0] === undefined || system.args[1] === undefined || system.args[
 
 var out_file = system.args[1],
     url = system.args[2],
-    resources = [],
     width = 400,
     height = 300;
 var page1 = require('webpage').create();
