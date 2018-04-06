@@ -12,18 +12,29 @@ if (system.args[0] === undefined || system.args[1] === undefined) {
 
 var url = system.args[1],
     resources = [],
-    width = 375,
-    height = 8000;
+    width = 400,
+    height = 300;
 
-var page = require('webpage').create();
-page.viewportSize = { width: width, height: height }
+var page1 = require('webpage').create();
+var page2 = require('webpage').create();
+page1.viewportSize = { width:width, height:height }
 
-page.open(url, function(stat) {
+page1.open(url, function(stat) {
+
   if (stat == 'success') {
-    setTimeout(function() {
-      page.render('page.png');
-      phantom.exit();
-    }, 4000);
+    var realHeight = page1.evaluate(function(){
+        return document.body.offsetHeight
+    });
+
+    page2.viewportSize = { width:width, height:realHeight }
+    page2.open(url, function(stat) {
+      // Set 5 seconds delay to load dynamic content
+      setTimeout(function() {
+        page2.render('page.png');
+        phantom.exit();
+      }, 5000);
+    });
+
   }
 });
 
