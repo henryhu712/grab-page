@@ -1,7 +1,8 @@
-Grab web page with Phantomjs
+Grab a full web page with Phantomjs
 ============================
 
-This project to use [Phantomjs](https://github.com/ariya/phantomjs) to render a web page as an image.
+This project to use [Phantomjs](https://github.com/ariya/phantomjs) to render a full web page as an image,
+including dynamic content.
 
 Usage
 -----
