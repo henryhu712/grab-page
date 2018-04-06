@@ -4,13 +4,14 @@
  *
  */
 var system = require("system");
-if (system.args[0] === undefined || system.args[1] === undefined) {
+if (system.args[0] === undefined || system.args[1] === undefined || system.args[2] === undefined) {
   console.log('Error');
-  console.log('Usage: $ ./phantomjs grabpage.js "http://www.example.com"');
+  console.log('Usage: $ ./phantomjs grabpage.js page.png "http://www.example.com"');
   phantom.exit();
 }
 
-var url = system.args[1],
+var out_file = system.args[1],
+    url = system.args[2],
     resources = [],
     width = 400,
     height = 300;
@@ -31,7 +32,7 @@ page1.open(url, function(stat) {
     page2.open(url, function(stat) {
       // Set 5 seconds delay to load dynamic content
       setTimeout(function() {
-        page2.render('page.png');
+        page2.render(out_file);
         phantom.exit();
       }, 5000);
     });
