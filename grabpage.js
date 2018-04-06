@@ -29,7 +29,7 @@ page1.open(url, function(stat) {
 
     page2.viewportSize = { width:width, height:realHeight }
     page2.open(url, function(stat) {
-      // Set 5 seconds delay to load dynamic content
+      // Delay 5 seconds to load dynamic content
       setTimeout(function() {
         page2.render(out_file);
         phantom.exit();
